@@ -1,0 +1,24 @@
+<svg width="320" height="220" viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#022c22"/>
+    </linearGradient>
+    <linearGradient id="bill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="220" rx="20" fill="url(#bg)"/>
+  <g opacity="0.16" fill="#a7f3d0">
+    <circle cx="45" cy="44" r="28"/>
+    <circle cx="282" cy="182" r="34"/>
+  </g>
+  <rect x="58" y="116" width="200" height="58" rx="10" fill="#042f2e" stroke="#065f46"/>
+  <rect x="66" y="103" width="200" height="58" rx="10" fill="#064e3b" stroke="#047857"/>
+  <rect x="74" y="90" width="200" height="58" rx="10" fill="url(#bill)" stroke="#34d399"/>
+  <circle cx="174" cy="119" r="15" fill="#022c22"/>
+  <text x="174" y="124" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#a7f3d0" font-weight="700">$</text>
+  <rect x="100" y="56" width="120" height="12" rx="6" fill="#a7f3d0" opacity="0.55"/>
+  <rect x="126" y="183" width="68" height="9" rx="4.5" fill="#6ee7b7" opacity="0.5"/>
+</svg>
