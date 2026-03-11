@@ -1,0 +1,117 @@
+import os
+from datetime import datetime
+
+FILE_NAME = "expenses.txt"
+
+
+
+def load_expenses():
+    """Load all expenses from file"""
+    expenses = []
+    if not os.path.exists(FILE_NAME):
+        return expenses
+    
+    with open(FILE_NAME, "r") as f:
+        for line in f:
+            date, category, amount, description = line.strip().split("|")
+            expenses.append({
+                "date": date,
+                "category": category,
+                "amount": float(amount),
+                "description": description
+            })
+    return expenses
+
+
+def save_expense(expense):
+    """Save a single expense to file"""
+    with open(FILE_NAME, "a") as f:
+        f.write(f"{expense['date']}|{expense['category']}|{expense['amount']}|{expense['description']}\n")
+
+
+
+
+def add_expense():
+    print("\n--- Add Expense ---")
+    category = input("Enter category (Food/Travel/Bills/Others): ")
+    amount = float(input("Enter amount: "))
+    description = input("Description: ")
+
+    expense = {
+        "date": datetime.now().strftime("%Y-%m-%d"),
+        "category": category,
+        "amount": amount,
+        "description": description
+    }
+
+    save_expense(expense)
+    print("Expense added successfully!")
+
+def view_all_expenses():
+    print("\n--- All Expenses ---")
+    expenses = load_expenses()
+    
+    if not expenses:
+        print("No expenses found.")
+        return
+    
+    for i, exp in enumerate(expenses, 1):
+        print(f"{i}. {exp['date']} | {exp['category']} | ₹{exp['amount']} | {exp['description']}")
+
+def view_summary():
+    print("\n--- Summary By Category ---")
+    expenses = load_expenses()
+    
+    if not expenses:
+        print("No expenses found.")
+        return
+    
+    summary = {}
+    for exp in expenses:
+        summary[exp["category"]] = summary.get(exp["category"], 0) + exp["amount"]
+    
+    for cat, total in summary.items():
+        print(f"{cat}: ₹{total}")
+
+def delete_all_expenses():
+    print("\nAre you sure you want to delete ALL expenses? (yes/no)")
+    choice = input("> ").lower()
+    if choice == "yes":
+        open(FILE_NAME, "w").close()
+        print("All expenses deleted.")
+    else:
+        print("Cancelled.")
+
+
+
+def main():
+    while True:
+        print("\n============================")
+        print("     EXPENSE TRACKER")
+        print("============================")
+        print("1. Add Expense")
+        print("2. View All Expenses")
+        print("3. View Summary by Category")
+        print("4. Delete All Expenses")
+        print("5. Exit")
+
+        choice = input("Enter choice: ")
+
+        if choice == "1":
+            add_expense()
+        elif choice == "2":
+            view_all_expenses()
+        elif choice == "3":
+            view_summary()
+        elif choice == "4":
+            delete_all_expenses()
+        elif choice == "5":
+            print("Exiting Expense Tracker. Goodbye!")
+            break
+        else:
+            print("Invalid choice! Please try again.")
+
+
+
+if __name__ == "__main__":
+    main()
