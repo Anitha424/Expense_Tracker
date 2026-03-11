@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build:client": "npm install --prefix ../frontend && npm run build --prefix ../frontend",
+    "render-build": "npm install && npm run build:client"
   },
   "keywords": [],
   "author": "",
