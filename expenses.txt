@@ -1,0 +1,3 @@
+2025-11-27|Food|250.0|thankyou
+2025-11-27|Travel|7050.0|enjoy your travel
+2025-11-27|bills|670.0|your bill is paid 
